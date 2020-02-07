@@ -72,7 +72,7 @@ namespace flowery.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<IEnumerable<String>> Delete(int id)
+        public ActionResult<String> Delete(int id)
         {
             try
             {

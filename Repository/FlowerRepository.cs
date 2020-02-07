@@ -29,9 +29,9 @@ namespace flowery.Repositories
         {
             string sql = @"
             INSERT INTO flowers
-            (name)
+            (name, price, perennial)
             VALUES
-            (@Name);
+            (@Name, @Price, @Perennial);
             SELECT LAST_INSERT_ID();
             ";
             int id = _db.ExecuteScalar<int>(sql, newData);
@@ -43,7 +43,10 @@ namespace flowery.Repositories
         {
             string sql = @"
             UPDATE flowers
-            SECTION name = @Name,
+            SET
+            name = @Name,
+            price = @Price,
+            perennial = @Perennial
             WHERE id = @Id;
             ";
             _db.Execute(sql, update);
